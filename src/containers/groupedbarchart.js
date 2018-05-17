@@ -2,8 +2,8 @@ import React from 'react';
 import { grey300 } from 'material-ui/styles/colors';
 
 export default class GroupedBarChart extends React.Component{
-
 	render() {
+		var some = true;
    var response = this.props.result;
    console.log(response,"response123")
 	 var result = response.searchResult;
@@ -14,7 +14,7 @@ export default class GroupedBarChart extends React.Component{
 	 var notRunCount = [];
 	 _.each(result,function(element){
 
-		  category.push({"label":element.jobName,"buildReference":element.buildReference});
+		  category.push({"label":element.jobName + " - " +  element.buildReference});
 		  allCount.push({"value":element.allCount});
 		  noPass.push({"value":element.passedCount});
 			noFail.push({"value":element.failedCount});
@@ -31,7 +31,7 @@ export default class GroupedBarChart extends React.Component{
     dataFormat: 'json',
     dataSource: {
         "chart": {
-            "caption": "Job Reports",
+            "caption": "All Job Reports",
             // "subcaption": "In Billion $",
             "yaxismaxvalue": "25",
             "decimals": "0",
@@ -71,7 +71,10 @@ export default class GroupedBarChart extends React.Component{
     .render();
 });
   return(
+		<div>
+     	   <h2 contenteditable={some}>You can edit me</h2>
 		<div id="chart-container-grouped">FusionCharts will render here</div>
+		</div>
 	)
 }
 }

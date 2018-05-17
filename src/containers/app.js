@@ -2,10 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import ThemeDefault from '../theme-default';
-import Topbar from '../subComponents/topbar';
+// import Topbar from '../subComponents/topbar';
 import NavBar from '../components/nav';
 import Dashboard from './dashboard';
 import GroupedBarChart from './groupedbarchart';
+import Jobcount from './jobcount';
 import MasterJob from './masterjobs';
 import axios from 'axios'
 
@@ -179,7 +180,7 @@ var masterArray = [
               "__v": 0
           }
       ]
-  },
+  }
 
 ]
 
@@ -237,7 +238,7 @@ var masterArray = [
         {
             "_id": "5ad5a6e19c2be6eea9580d88",
             "buildReference": "151",
-            "jobName": "CAT_MultiJob_Testing",
+            "jobName": "CAT_FlightOnly",
             "allCount": 11,
             "notRunCount": 5,
             "failedCount": 1,
@@ -248,6 +249,78 @@ var masterArray = [
             "environment": "QA1:silo1:FullRegression",
             "updatedOn": "2018-04-17T07:42:34Z",
             "__v": 0
+        },
+        {
+            "_id": "5ad60d69921dfc4bac8ebf29",
+            "passedCount": 1,
+            "failedCount": 2,
+            "notRunCount": 28,
+            "allCount": 31,
+            "environment": "QA1:silo1:FullRegression",
+            "startDateTime": "2018-04-17T08:06:03Z",
+            "jobName": "CAT_MultiJob_Testing",
+            "buildReference": "152",
+            "__v": 0,
+            "endDateTime": "2018-04-17T15:06:03.000Z",
+            "subBuilds": [
+                {
+                    "masterBuild": {
+                        "buildReference": "150",
+                        "jobName": "CAT_MultiJob_Testing"
+                    },
+                    "_id": "5ad60df429428199e80763a0",
+                    "buildReference": "155",
+                    "jobName": "CAT_Flight_Hotel",
+                    "allCount": 11,
+                    "notRunCount": 7,
+                    "failedCount": 1,
+                    "passedCount": 2,
+                    "jobStatus": "COMPLETED",
+                    "endDateTime": "2018-04-17T15:08:45Z",
+                    "startDateTime": "2018-04-17T15:06:47Z",
+                    "environment": "QA1:silo1:FullRegression",
+                    "updatedOn": "2018-04-17T15:08:45Z",
+                    "__v": 0
+                },
+                {
+                    "masterBuild": {
+                        "buildReference": "151",
+                        "jobName": "CAT_MultiJob_Testing"
+                    },
+                    "_id": "5ad60e6f29428199e80763a1",
+                    "buildReference": "156",
+                    "jobName": "CAT_Flight_Car",
+                    "allCount": 11,
+                    "notRunCount": 5,
+                    "failedCount": 1,
+                    "passedCount": 5,
+                    "jobStatus": "",
+                    "endDateTime": "",
+                    "startDateTime": "2018-04-17T15:06:48Z",
+                    "environment": "QA1:silo1:FullRegression",
+                    "updatedOn": "2018-04-17T15:06:48Z",
+                    "__v": 0
+                },
+                {
+                    "masterBuild": {
+                        "buildReference": "151",
+                        "jobName": "CAT_MultiJob_Testing"
+                    },
+                    "_id": "5ad60ec029428199e80763a2",
+                    "buildReference": "153",
+                    "jobName": "CAT_FlightOnly",
+                    "allCount": 9,
+                    "notRunCount": 8,
+                    "failedCount": 0,
+                    "passedCount": 1,
+                    "jobStatus": "",
+                    "endDateTime": "",
+                    "startDateTime": "2018-04-17T15:06:45Z",
+                    "environment": "QA1:silo1:FullRegression",
+                    "updatedOn": "2018-04-17T15:06:45Z",
+                    "__v": 0
+                }
+            ]
         }
     ],
     "message": ""
@@ -294,7 +367,20 @@ this.state = {
             <div>
                 <NavBar />
                  <Dashboard />
-                 <GroupedBarChart result={this.state.data}/>
+                 <div className ="row">
+                     <div className = "col-md-12">
+                       <GroupedBarChart result = {this.state.data}/>
+                     </div>
+                 </div>
+                 <div className ="row">
+                     <div className ="col-md-6">
+                      <Jobcount result = {this.state.data}/>
+                     </div>
+                     <div className ="col-md-6">
+                       <MasterJob result = {this.state.data}/>
+                     </div>
+                 </div>
+
             </div>
         </MuiThemeProvider>
     );

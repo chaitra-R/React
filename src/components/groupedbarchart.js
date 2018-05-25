@@ -72,7 +72,7 @@ export default class GroupedBarChart extends React.Component{
 });
   return(
 		<div>
-     	   <h2 contenteditable={some}>You can edit me</h2>
+     	
 		<div id="chart-container-grouped">FusionCharts will render here</div>
 		</div>
 	)

@@ -1,10 +1,12 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import {Toolbar, ToolbarGroup, ToolbarSeparator, ToolbarTitle} from 'material-ui/Toolbar';
 // import Topbar from'../subComponents/topbar';
 import { Link } from 'react-router';
 
 export default class NavBar extends React.Component {
   render(){
+    // var result  = this.props.homeLink;
 
     return(
      <div>
@@ -15,8 +17,8 @@ export default class NavBar extends React.Component {
                        src="src/images/smartCat-icon.png"
                        size={100}/>
                  </div>
+                  <Link to={'/dash'}><ToolbarTitle text = "Dashboard"/></Link>
 
-                  <Link to={'/dash'}><ToolbarTitle text="Dashboard"/></Link>
                   <Link to={'/meta'}><ToolbarTitle text="Metatags"/></Link>
               </ToolbarGroup>
 
@@ -30,3 +32,4 @@ export default class NavBar extends React.Component {
    )
   }
 }
+// <Link to={'/dash'}><ToolbarTitle text = {result}/></Link>

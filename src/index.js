@@ -1,23 +1,17 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import { render } from 'react-dom';
 import { Router, browserHistory } from 'react-router';
 import routes from './routes';
 import { Provider } from 'react-redux';
-import { createStore, applyMiddleware } from 'redux';
-
-
 import App from './containers/app';
-import reducers from './reducers';
+import store from "./store";
 
-const createStoreWithMiddleware = applyMiddleware()(createStore);
-
-// ReactDOM.render(
-//   <Provider store={createStoreWithMiddleware(reducers)}>
-//     <App />
-//   </Provider>
-//   , document.querySelector('.container123'));
 
 render(
-  <Router routes={routes} history={browserHistory} />,document.querySelector('.container123')
+  <Provider store={store}>
+   <Router routes={routes} history={browserHistory} />
+  </Provider>,
+  document.querySelector('.container123')
+
 )
+//provider gives store to ur whole application,this is how we conncet out store to app//
